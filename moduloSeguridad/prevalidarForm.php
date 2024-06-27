@@ -11,7 +11,11 @@ if ($controller->validarSolicitud()) {
         if ($controller->validarTexto($txtUsuario, $txtPassword)) {
             if ($controller->autenticarUsuario($txtUsuario)) {
                 if ($controller->autenticarCredenciales($txtUsuario, $txtPassword)) {
+                    $privilegios = $controller->adquirirPrivilegios($txtUsuario);
+                    $rol = $controller->adquirirRol($txtUsuario);
                     $_SESSION['usuario'] = $txtUsuario;
+                    $_SESSION['rol'] = $rol;
+                    $_SESSION['privilegios'] = $privilegios;
                     $response['flag'] = 1;
                     $response['redirect'] = "../pre_sgvpapeleria/moduloSeguridad/mostrarPanelPrincipal.php";
                     header('Content-Type: application/json');

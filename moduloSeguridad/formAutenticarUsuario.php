@@ -47,7 +47,7 @@ class FormAutenticarUsuario
 
         <body>
             <h1>Autenticación de Usuario</h1>
-            <form name="formAutenticar" action="moduloSeguridad/prevalidarForm.php" method="post">
+            <form name="formAutenticar">
                 <label for="usuario">Usuario:</label>
                 <input type="text" name="txtUsuario" id="usuario">
                 <label for="password">Contraseña:</label>
@@ -86,6 +86,13 @@ class FormAutenticarUsuario
                                     text: response['message']
                                 });
                             }
+                        },
+                        error: function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Error en la solicitud.'
+                            });
                         }
                     });
 

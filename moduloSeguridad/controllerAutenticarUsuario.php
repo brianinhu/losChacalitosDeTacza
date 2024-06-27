@@ -1,6 +1,7 @@
 <?php
 
 include_once("../modelo/E_Usuario.php");
+include_once("../modelo/E_rol_privilegio.php");
 class ControllerAutenticarUsuario
 {
 
@@ -49,5 +50,17 @@ class ControllerAutenticarUsuario
         } else {
             return false;
         }
+    }
+
+    public function adquirirPrivilegios($usuario)
+    {
+        $objRolPrivilegio = new E_rol_privilegio();
+        return $objRolPrivilegio->obtenerPrivilegios($usuario);
+    }
+
+    public function adquirirRol($usuario)
+    {
+        $objUsuario = new E_Usuario();
+        return $objUsuario->obtenerRol($usuario);
     }
 }
